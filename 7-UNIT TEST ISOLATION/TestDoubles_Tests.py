@@ -17,6 +17,8 @@ def mock_open(monkeypatch):
     monkeypatch.setattr("builtins.open", mock_open)
     return mock_open
 
+# mock_open is fixture parameter name
+# that fixture will be called and return value will be assigned to mock_open
 def test_returnsCorrectString(mock_open, monkeypatch):
     mock_exists = MagicMock(return_value=True)
     monkeypatch.setattr("os.path.exists", mock_exists)
@@ -24,6 +26,7 @@ def test_returnsCorrectString(mock_open, monkeypatch):
 
     result = readFromFile("mert")
     mock_open.assert_called_once_with("mert", "r")
+    # Checks that open() was called once, with exactly those arguments.
     assert result == "test line"
 
 def test_throwExceptionWithBadFile(mock_open, monkeypatch):

@@ -165,6 +165,7 @@ def test_path(monkeypatch):
 #   module and class attributes
 #   dictionary entries
 #   environment variables
+# Temporarily replacing a function at runtime
 
 
 
